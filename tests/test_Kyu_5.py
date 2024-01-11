@@ -2,7 +2,8 @@ from unittest import TestCase
 from katas.Kyu_5 import (move_zeros,
                          fibonacci,
                          luck_check,
-                         min_umbrellas)
+                         min_umbrellas,
+                         proc_seq)
 
 
 class TestKyu5(TestCase):
@@ -87,3 +88,11 @@ class TestKyu5(TestCase):
                                         'sunny', 'clear']), 7)
         self.assertEqual(min_umbrellas(['clear', 'cloudy', 'cloudy', 'cloudy', 'clear', 'sunny', 'cloudy', 'sunny',
                                         'cloudy', 'clear']), 0)
+
+    def test_proc_seq(self):
+
+        self.assertEqual(proc_seq(23, 17, 89), [8, 218, 379, 2388])
+        self.assertEqual(proc_seq(22, 22, 22, 22), [1, 2222])
+        self.assertEqual(proc_seq(230, 15, 8), [4, 218, 358, 1152])
+        self.assertEqual(proc_seq(4312, 9440, 3616, 1218, 9152, 8178, 8234, 6575, 6267),
+                         [46656, 101111252, 496898877, 13860641773440])
