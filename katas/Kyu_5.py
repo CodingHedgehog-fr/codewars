@@ -82,8 +82,8 @@ def luck_check(st: str) -> bool:
 #
 # Each morning a man walks to work, and each afternoon he walks back home.
 #
-# If it is raining in the morning and he has an umbrella at home, he takes an umbrella for the journey so he doesn't
-# get wet, and stores it at work. Likewise, if it is raining in the afternoon and he has an umbrella at work, he takes
+# If it is raining in the morning, and he has an umbrella at home, he takes an umbrella for the journey, so he doesn't
+# get wet, and stores it at work. Likewise, if it is raining in the afternoon, and he has an umbrella at work, he takes
 # an umbrella for the journey home.
 #
 # Given an array of the weather conditions, your task is to work out the minimum number of umbrellas he needs to start
@@ -150,7 +150,7 @@ def min_umbrellas(weather: list[str]) -> int:
 # You will receive an uncertain amount of integers in a certain order k1, k2, ..., kn.
 #
 # You form a new number of n digits in the following way: you take one of the possible digits of the first given number,
-# k1, then the same with the given number k2, repeating the same process up to kn and you concatenate these obtained
+# k1, then the same with the given number k2, repeating the same process up to kn, and you concatenate these obtained
 # digits(in the order that were taken) obtaining the new number. As you can see, we have many possibilities.
 #
 # Let's see the process above explained with three given numbers:
@@ -187,4 +187,3 @@ def proc_seq(*args: tuple[int]) -> list[int]:
         return [1, list(lst_dgts)[0]]
     else:
         return [len(lst_dgts), min(lst_dgts), max(lst_dgts), sum(lst_dgts)]
-

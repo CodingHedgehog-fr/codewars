@@ -4,7 +4,8 @@ from katas.Kyu_4 import (strip_comments,
                          sum_of_intervals,
                          User,
                          exp_sum,
-                         balanced_parens)
+                         balanced_parens,
+                         RomanNumerals)
 
 
 class TestKyu4(TestCase):
@@ -181,4 +182,20 @@ class TestKyu4(TestCase):
                                                      '()()(()())()', '()()(())(())', '()()(())()()', '()()()((()))',
                                                      '()()()(()())', '()()()(())()', '()()()()(())', '()()()()()()']))
 
+    def test_RomanNumerals(self):
 
+        roman = RomanNumerals()
+        self.assertEqual(RomanNumerals.to_roman(1000), 'M')
+        self.assertEqual(RomanNumerals.to_roman(4), 'IV')
+        self.assertEqual(RomanNumerals.to_roman(1990), 'MCMXC')
+        self.assertEqual(RomanNumerals.to_roman(2008), 'MMVIII')
+        self.assertEqual(RomanNumerals.to_roman(1000), 'M')
+        self.assertEqual(RomanNumerals.to_roman(786), 'DCCLXXXVI')
+        self.assertEqual(RomanNumerals.to_roman(3499), 'MMMCDXCIX')
+        self.assertEqual(RomanNumerals.to_roman(678), 'DCLXXVIII')
+
+        self.assertEqual(RomanNumerals.from_roman('XXI'), 21)
+        self.assertEqual(RomanNumerals.from_roman('I'), 1)
+        self.assertEqual(RomanNumerals.from_roman('IV'), 4)
+        self.assertEqual(RomanNumerals.from_roman('MMVIII'), 2008)
+        self.assertEqual(RomanNumerals.from_roman('MDCLXVI'), 1666)

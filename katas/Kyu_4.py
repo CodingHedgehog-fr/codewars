@@ -332,3 +332,76 @@ def build_list_of_parens(lst_par: None, n) -> list[str]:
         res += [''.join([elt[:i], '()', elt[i:]]) for i in range(len(elt))]
 
     return sorted(list(set(res)))
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Description:
+#
+# Write two functions that convert a roman numeral to and from an integer value. Multiple roman numeral values
+# will be tested for each function.
+#
+# Modern Roman numerals are written by expressing each digit separately starting with the left most digit and skipping
+# any digit with a value of zero. In Roman numerals 1990 is rendered: 1000=M, 900=CM, 90=XC; resulting in MCMXC.
+# 2008 is written as 2000=MM, 8=VIII; or MMVIII. 1666 uses each Roman symbol in descending order: MDCLXVI.
+#
+# Input range : 1 <= n < 4000
+#
+# In this kata 4 should be represented as IV, NOT as IIII (the "watchmaker's four").
+# Examples
+#
+# to roman:
+# 2000 -> "MM"
+# 1666 -> "MDCLXVI"
+# 1000 -> "M"
+#  400 -> "CD"
+#   90 -> "XC"
+#   40 -> "XL"
+#    1 -> "I"
+#
+# from roman:
+# "MM"      -> 2000
+# "MDCLXVI" -> 1666
+# "M"       -> 1000
+# "CD"      -> 400
+# "XC"      -> 90
+# "XL"      -> 40
+# "I"       -> 1
+# ----------------------------------------------------------------------------------------------------------------------
+
+
+class RomanNumerals:
+    r_to_d = {'': 0, 'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    d_to_r = {val: key for key, val in r_to_d.items()}
+
+    @staticmethod
+    def to_roman(decimal_nb: int) -> str:
+
+        power = len(str(decimal_nb)) - 1
+        roman_nb = ''
+        for dec_dgt in [int(dec_dgt) for dec_dgt in str(decimal_nb)]:
+            if dec_dgt in [5, 6, 7, 8]:
+                roman_nb += RomanNumerals.d_to_r[5 * 10 ** power] + RomanNumerals.d_to_r[10 ** power] * (dec_dgt - 5)
+            elif dec_dgt in [4, 9]:
+                roman_nb += RomanNumerals.d_to_r[10 ** power] + RomanNumerals.d_to_r[(dec_dgt + 1) * 10 ** power]
+            else:
+                roman_nb += RomanNumerals.d_to_r[10 ** power] * dec_dgt
+            power -= 1
+
+        return roman_nb
+
+    @staticmethod
+    def from_roman(roman_nb: str) -> int:
+        decimal_nb = 0
+        prev_rom_dgt = ''
+        for rom_dgt in reversed(roman_nb):
+            if rom_dgt == 'X' and prev_rom_dgt in ['C', 'L']:
+                decimal_nb -= RomanNumerals.r_to_d[rom_dgt]
+            elif rom_dgt == 'I' and prev_rom_dgt in ['V', 'X']:
+                decimal_nb -= RomanNumerals.r_to_d[rom_dgt]
+            elif rom_dgt == 'C' and prev_rom_dgt in ['D', 'M']:
+                decimal_nb -= RomanNumerals.r_to_d[rom_dgt]
+            else:
+                decimal_nb += RomanNumerals.r_to_d[rom_dgt]
+            prev_rom_dgt = rom_dgt
+
+        return decimal_nb
+
