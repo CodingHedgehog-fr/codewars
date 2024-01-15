@@ -6,11 +6,12 @@ from katas.Kyu_4 import (strip_comments,
                          exp_sum,
                          balanced_parens,
                          RomanNumerals,
-                         mix)
+                         mix,
+                         dbl_linear)
 
 
 class TestKyu4(TestCase):
-    """Testutils class aims at unit testing Kyu_4.py module"""
+    """Testutils class aims at unit self.assertEqual Kyu_4.py module"""
 
     def test_strip_comments(self):
 
@@ -128,20 +129,20 @@ class TestKyu4(TestCase):
 
     def test_exp_sum(self):
 
-        self.assertEqual(exp_sum(1), 1, 'Testing for 1')
-        self.assertEqual(exp_sum(2), 2, 'Testing for 2')
-        self.assertEqual(exp_sum(3), 3, 'Testing for 3')
-        self.assertEqual(exp_sum(4), 5, 'Testing for 4')
-        self.assertEqual(exp_sum(5), 7, 'Testing for 5')
-        self.assertEqual(exp_sum(20), 627, 'Testing for 20')
-        self.assertEqual(exp_sum(30), 5604, 'Testing for 30')
-        self.assertEqual(exp_sum(40), 37338, 'Testing for 40')
-        self.assertEqual(exp_sum(43), 63261, 'Testing for 43')
-        self.assertEqual(exp_sum(60), 966467, 'Testing for 60')
-        self.assertEqual(exp_sum(70), 4087968, 'Testing for 70')
-        self.assertEqual(exp_sum(90), 56634173, 'Testing for 90')
-        self.assertEqual(exp_sum(200), 3972999029388, 'Testing for 200')
-        self.assertEqual(exp_sum(275), 1520980492851175, 'Testing for 275')
+        self.assertEqual(exp_sum(1), 1, 'self.assertEqual for 1')
+        self.assertEqual(exp_sum(2), 2, 'self.assertEqual for 2')
+        self.assertEqual(exp_sum(3), 3, 'self.assertEqual for 3')
+        self.assertEqual(exp_sum(4), 5, 'self.assertEqual for 4')
+        self.assertEqual(exp_sum(5), 7, 'self.assertEqual for 5')
+        self.assertEqual(exp_sum(20), 627, 'self.assertEqual for 20')
+        self.assertEqual(exp_sum(30), 5604, 'self.assertEqual for 30')
+        self.assertEqual(exp_sum(40), 37338, 'self.assertEqual for 40')
+        self.assertEqual(exp_sum(43), 63261, 'self.assertEqual for 43')
+        self.assertEqual(exp_sum(60), 966467, 'self.assertEqual for 60')
+        self.assertEqual(exp_sum(70), 4087968, 'self.assertEqual for 70')
+        self.assertEqual(exp_sum(90), 56634173, 'self.assertEqual for 90')
+        self.assertEqual(exp_sum(200), 3972999029388, 'self.assertEqual for 200')
+        self.assertEqual(exp_sum(275), 1520980492851175, 'self.assertEqual for 275')
 
     def test_balanced_parens(self):
 
@@ -223,4 +224,15 @@ class TestKyu4(TestCase):
         self.assertEqual(mix("A generation must confront the looming ", "codewarrs"),
                          "1:nnnnn/1:ooooo/1:tttt/1:eee/1:gg/1:ii/1:mm/=:rr")
 
+    def test_dbl_linear(self):
 
+        self.assertEqual(dbl_linear(10), 22)
+        self.assertEqual(dbl_linear(20), 57)
+        self.assertEqual(dbl_linear(30), 91)
+        self.assertEqual(dbl_linear(50), 175)
+        self.assertEqual(dbl_linear(100), 447)
+        self.assertEqual(dbl_linear(500), 3355)
+        self.assertEqual(dbl_linear(1000), 8488)
+        self.assertEqual(dbl_linear(2000), 19773)
+        self.assertEqual(dbl_linear(6000), 80914)
+        self.assertEqual(dbl_linear(60000), 1511311)    
