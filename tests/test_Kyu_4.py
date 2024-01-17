@@ -11,7 +11,7 @@ from katas.Kyu_4 import (strip_comments,
 
 
 class TestKyu4(TestCase):
-    """Testutils class aims at unit self.assertEqual Kyu_4.py module"""
+    """TestKyu4 class aims at unit testing Kyu_4.py module"""
 
     def test_strip_comments(self):
 

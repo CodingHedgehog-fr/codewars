@@ -7,7 +7,7 @@ from katas.Kyu_5 import (move_zeros,
 
 
 class TestKyu5(TestCase):
-    """Testutils class aims at unit testing Kyu_5.py module"""
+    """TestKyu5 class aims at unit testing Kyu_5.py module"""
 
     def test_move_zeros(self):
 
